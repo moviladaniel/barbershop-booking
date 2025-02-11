@@ -1,0 +1,948 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /api/users/{id}:
+    get:
+      tags:
+      - user-controller
+      operationId: getUserById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/User"
+    put:
+      tags:
+      - user-controller
+      operationId: updateUser
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/User"
+    delete:
+      tags:
+      - user-controller
+      operationId: deleteUser
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+  /api/services/{id}:
+    get:
+      tags:
+      - service-entity-controller
+      operationId: getServiceById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ServiceEntity"
+    put:
+      tags:
+      - service-entity-controller
+      operationId: updateService
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ServiceEntity"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ServiceEntity"
+    delete:
+      tags:
+      - service-entity-controller
+      operationId: deleteService
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+  /api/reviews/{id}:
+    get:
+      tags:
+      - review-controller
+      operationId: getReviewById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Review"
+    put:
+      tags:
+      - review-controller
+      operationId: updateReview
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: newRating
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: newComment
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Review"
+    delete:
+      tags:
+      - review-controller
+      operationId: deleteReview
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+  /api/notifications/{id}:
+    get:
+      tags:
+      - notification-controller
+      operationId: getNotificationById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Notification"
+    put:
+      tags:
+      - notification-controller
+      operationId: updateNotification
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Notification"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Notification"
+    delete:
+      tags:
+      - notification-controller
+      operationId: deleteNotification
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+  /api/bookings/{id}:
+    get:
+      tags:
+      - booking-controller
+      operationId: getBookingById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Booking"
+    put:
+      tags:
+      - booking-controller
+      operationId: updateBooking
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: newDateTime
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Booking"
+    delete:
+      tags:
+      - booking-controller
+      operationId: deleteBooking
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+  /api/barbers/{id}:
+    get:
+      tags:
+      - barber-controller
+      operationId: getBarberById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Barber"
+    put:
+      tags:
+      - barber-controller
+      operationId: updateBarber
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Barber"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Barber"
+    delete:
+      tags:
+      - barber-controller
+      operationId: deleteBarber
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+  /api/users:
+    get:
+      tags:
+      - user-controller
+      operationId: getAllUsers
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+    post:
+      tags:
+      - user-controller
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/User"
+  /api/services:
+    get:
+      tags:
+      - service-entity-controller
+      operationId: getAllServices
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ServiceEntity"
+    post:
+      tags:
+      - service-entity-controller
+      operationId: createService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ServiceEntity"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ServiceEntity"
+  /api/reviews/{bookingId}:
+    post:
+      tags:
+      - review-controller
+      operationId: createReview
+      parameters:
+      - name: bookingId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: rating
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: comment
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Review"
+  /api/notifications/sendReminder/{bookingId}:
+    post:
+      tags:
+      - notification-controller
+      operationId: sendReminder
+      parameters:
+      - name: bookingId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Notification"
+  /api/notifications/createNotification:
+    post:
+      tags:
+      - notification-controller
+      operationId: createNotification
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Notification"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Notification"
+  /api/bookings:
+    get:
+      tags:
+      - booking-controller
+      operationId: getAllBookings
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Booking"
+    post:
+      tags:
+      - booking-controller
+      operationId: createBooking
+      parameters:
+      - name: userId
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: barberId
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: serviceIds
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int64
+      - name: dateTime
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Booking"
+  /api/barbers:
+    get:
+      tags:
+      - barber-controller
+      operationId: getAllBarbers
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Barber"
+    post:
+      tags:
+      - barber-controller
+      operationId: createBarber
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Barber"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Barber"
+  /api/users/byName:
+    get:
+      tags:
+      - user-controller
+      operationId: getUsersByName
+      parameters:
+      - name: firstName
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: lastName
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+  /api/services/byPriceLessThan:
+    get:
+      tags:
+      - service-entity-controller
+      operationId: getServicesByPriceLessThan
+      parameters:
+      - name: price
+        in: query
+        required: true
+        schema:
+          type: number
+          format: double
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ServiceEntity"
+  /api/services/byDurationLessThan:
+    get:
+      tags:
+      - service-entity-controller
+      operationId: getServicesByDurationLessThan
+      parameters:
+      - name: duration
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ServiceEntity"
+  /api/reviews:
+    get:
+      tags:
+      - review-controller
+      operationId: getAllReviews
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+  /api/reviews/byRating:
+    get:
+      tags:
+      - review-controller
+      operationId: getReviewsByRating
+      parameters:
+      - name: rating
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+  /api/reviews/byComment:
+    get:
+      tags:
+      - review-controller
+      operationId: getReviewsByComment
+      parameters:
+      - name: comment
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+  /api/notifications:
+    get:
+      tags:
+      - notification-controller
+      operationId: getAllNotifications
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Notification"
+  /api/notifications/byDelivered:
+    get:
+      tags:
+      - notification-controller
+      operationId: getNotificationsByDelivered
+      parameters:
+      - name: delivered
+        in: query
+        required: true
+        schema:
+          type: boolean
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Notification"
+  /api/bookings/byStatus:
+    get:
+      tags:
+      - booking-controller
+      operationId: getBookingsByStatus
+      parameters:
+      - name: status
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Booking"
+  /api/bookings/byBarber:
+    get:
+      tags:
+      - booking-controller
+      operationId: getBookingsByBarber
+      parameters:
+      - name: barberId
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Booking"
+  /api/barbers/bySpeciality/{speciality}:
+    get:
+      tags:
+      - barber-controller
+      operationId: getBarberbySpeciality
+      parameters:
+      - name: speciality
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Barber"
+  /api/barbers/byRating/{rating}:
+    get:
+      tags:
+      - barber-controller
+      operationId: getBarberbySpeciality_1
+      parameters:
+      - name: rating
+        in: path
+        required: true
+        schema:
+          type: number
+          format: double
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Barber"
+  /api/barbers/byName/{name}:
+    get:
+      tags:
+      - barber-controller
+      operationId: getBarberByName
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Barber"
+  /api/bookings/{id}/cancel:
+    delete:
+      tags:
+      - booking-controller
+      operationId: cancelBooking
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    Barber:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        specialty:
+          type: string
+        rating:
+          type: number
+          format: double
+        bookings:
+          type: array
+          items:
+            $ref: "#/components/schemas/Booking"
+    Booking:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        dateTime:
+          type: string
+          format: date-time
+        status:
+          type: string
+        paid:
+          type: boolean
+        user:
+          $ref: "#/components/schemas/User"
+        barber:
+          $ref: "#/components/schemas/Barber"
+        services:
+          type: array
+          items:
+            $ref: "#/components/schemas/ServiceEntity"
+    ServiceEntity:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        duration:
+          type: integer
+          format: int32
+        price:
+          type: number
+          format: double
+    User:
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        email:
+          type: string
+        password:
+          maxLength: 2147483647
+          minLength: 6
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        bookings:
+          type: array
+          items:
+            $ref: "#/components/schemas/Booking"
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        rating:
+          type: integer
+          format: int32
+        comment:
+          type: string
+        reviewDate:
+          type: string
+          format: date-time
+        booking:
+          $ref: "#/components/schemas/Booking"
+    Notification:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        message:
+          type: string
+        recipientEmail:
+          type: string
+        sentTime:
+          type: string
+          format: date-time
+        delivered:
+          type: boolean
+        booking:
+          $ref: "#/components/schemas/Booking"
