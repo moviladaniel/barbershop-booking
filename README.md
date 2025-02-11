@@ -92,7 +92,7 @@ The system defines six primary entities:
     ``` properties
    mvn clean test
    ```
-7. **For more information**, check documentation (PDF) and open the _open-api.html_ to view the endpoints.
+7. **For more information**, check documentation (PDF) and open the _api_docs.pdf_ to view the endpoints and use Swagger.
    
 
 
