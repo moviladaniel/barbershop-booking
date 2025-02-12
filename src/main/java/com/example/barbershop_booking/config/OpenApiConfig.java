@@ -23,6 +23,7 @@ public class OpenApiConfig {
         Info info = new Info()
                 .title("BarberShop Booking System")
                 .description("This API exposes endpoints to manage the system.");
+                info.setVersion("0");
 
         return new OpenAPI().info(info);
     }

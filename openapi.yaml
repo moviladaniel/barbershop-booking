@@ -1,7 +1,8 @@
 openapi: 3.0.1
 info:
-  title: OpenAPI definition
-  version: v0
+  title: BarberShop Booking System
+  description: This API exposes endpoints to manage the system.
+  version: "0"
 servers:
 - url: http://localhost:8080
   description: Generated server url
@@ -839,12 +840,17 @@ paths:
 components:
   schemas:
     Barber:
+      required:
+      - name
+      - specialty
       type: object
       properties:
         id:
           type: integer
           format: int64
         name:
+          maxLength: 100
+          minLength: 0
           type: string
         specialty:
           type: string
@@ -856,6 +862,8 @@ components:
           items:
             $ref: "#/components/schemas/Booking"
     Booking:
+      required:
+      - status
       type: object
       properties:
         id:
@@ -877,6 +885,9 @@ components:
           items:
             $ref: "#/components/schemas/ServiceEntity"
     ServiceEntity:
+      required:
+      - duration
+      - name
       type: object
       properties:
         id:
@@ -914,6 +925,9 @@ components:
           items:
             $ref: "#/components/schemas/Booking"
     Review:
+      required:
+      - comment
+      - reviewDate
       type: object
       properties:
         id:
@@ -930,6 +944,10 @@ components:
         booking:
           $ref: "#/components/schemas/Booking"
     Notification:
+      required:
+      - delivered
+      - message
+      - sentTime
       type: object
       properties:
         id:
